@@ -1,0 +1,336 @@
+.hero-section {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 130px 0 60px;
+}
+
+.hero-bg-glow {
+  position: absolute;
+  top: -15%;
+  right: -8%;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(197, 164, 91, 0.08) 0%, rgba(16, 45, 34, 0.25) 45%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 72px;
+  position: relative;
+  z-index: 1;
+  flex: 1;
+}
+
+.hero-content {
+  flex: 1.15;
+  max-width: 640px;
+}
+
+/* Editorial Metadata */
+.hero-editorial-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-secondary);
+  letter-spacing: 1.5px;
+  margin-bottom: 20px;
+}
+
+.editorial-num {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.editorial-divider {
+  opacity: 0.4;
+}
+
+.hero-availability {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--text-secondary);
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  background: rgba(16, 45, 34, 0.5);
+  border: 1px solid rgba(197, 164, 91, 0.2);
+}
+
+.availability-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+  animation: pulse-dot 2.5s infinite ease-in-out;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 0.9; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.8); }
+}
+
+.hero-intro-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  color: var(--text-accent);
+  margin-bottom: 16px;
+}
+
+.intro-line {
+  display: inline-block;
+  width: 32px;
+  height: 1px;
+  background: var(--accent);
+}
+
+/* Expressive Headline */
+.hero-headline {
+  font-family: var(--font-serif);
+  font-size: clamp(40px, 5.8vw, 68px);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  color: var(--text-heading);
+  margin-bottom: 22px;
+}
+
+.gold-highlight {
+  color: var(--accent);
+  background: linear-gradient(135deg, #E8C987 0%, #C5A45B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.italic-serif {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent-light);
+}
+
+/* Role & Focus */
+.hero-role-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 14.5px;
+  margin-bottom: 20px;
+  color: var(--text-secondary);
+}
+
+.role-prefix {
+  color: var(--text-secondary);
+  opacity: 0.7;
+}
+
+.role-text {
+  color: var(--accent-light);
+  font-weight: 500;
+}
+
+.cursor {
+  color: var(--accent);
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.hero-bio {
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 24px;
+}
+
+.hero-location {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--accent);
+  margin-bottom: 32px;
+}
+
+.hero-cta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Luxury Atelier Portrait Frame */
+.hero-visual {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.atelier-frame {
+  position: relative;
+  width: 380px;
+  padding: 16px;
+  background: linear-gradient(145deg, rgba(16, 45, 34, 0.85) 0%, rgba(7, 28, 22, 0.95) 100%);
+  border: 1px solid rgba(197, 164, 91, 0.35);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 20px 50px rgba(2, 10, 8, 0.7), 0 0 30px rgba(197, 164, 91, 0.12);
+  transition: all var(--transition-base);
+}
+
+.atelier-frame:hover {
+  transform: translateY(-4px);
+  border-color: rgba(197, 164, 91, 0.6);
+  box-shadow: 0 24px 60px rgba(2, 10, 8, 0.8), 0 0 40px rgba(197, 164, 91, 0.22);
+}
+
+/* Delicate Gold Corner Accents */
+.frame-corner {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.frame-corner.top-left {
+  top: 8px;
+  left: 8px;
+  border-top: 2px solid var(--accent);
+  border-left: 2px solid var(--accent);
+}
+
+.frame-corner.top-right {
+  top: 8px;
+  right: 8px;
+  border-top: 2px solid var(--accent);
+  border-right: 2px solid var(--accent);
+}
+
+.frame-corner.bottom-left {
+  bottom: 8px;
+  left: 8px;
+  border-bottom: 2px solid var(--accent);
+  border-left: 2px solid var(--accent);
+}
+
+.frame-corner.bottom-right {
+  bottom: 8px;
+  right: 8px;
+  border-bottom: 2px solid var(--accent);
+  border-right: 2px solid var(--accent);
+}
+
+.frame-inner {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 3.8;
+  border-radius: calc(var(--radius-lg) - 4px);
+  overflow: hidden;
+  background: #04100D;
+  border: 1px solid rgba(197, 164, 91, 0.2);
+}
+
+.hero-portrait {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 18%;
+  filter: contrast(1.02);
+  transition: transform var(--transition-slow);
+}
+
+.atelier-frame:hover .hero-portrait {
+  transform: scale(1.03);
+}
+
+/* Editorial Scroll Indicator */
+.scroll-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 24px 0 0;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+  margin-top: auto;
+}
+
+.scroll-text {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.scroll-indicator:hover {
+  color: var(--accent-light);
+}
+
+/* Responsiveness */
+@media (max-width: 992px) {
+  .hero-container {
+    gap: 48px;
+  }
+
+  .atelier-frame {
+    width: 320px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding-top: 100px;
+    padding-bottom: 40px;
+  }
+
+  .hero-container {
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-editorial-meta,
+  .hero-intro-label,
+  .hero-role-row,
+  .hero-location {
+    justify-content: center;
+  }
+
+  .hero-cta {
+    justify-content: center;
+  }
+
+  .atelier-frame {
+    width: 280px;
+  }
+}

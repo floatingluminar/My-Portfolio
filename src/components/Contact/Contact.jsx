@@ -164,7 +164,7 @@ const Contact = () => {
                 type="text"
                 id="name"
                 name="name"
-                placeholder="e.g. Eleanor Vance"
+                placeholder="Enter your name"
                 value={formData.name}
                 onChange={handleChange}
               />

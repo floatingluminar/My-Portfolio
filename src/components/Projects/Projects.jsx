@@ -23,7 +23,10 @@ const Projects = () => {
 
         <div className="projects-grid">
           {projectsData.map((project, i) => {
-            const isCompleted = project.status === 'Completed';
+            const isCompleted =
+              project.status === 'Completed' ||
+              project.status.includes('Tested') ||
+              project.status.includes('Deployed');
             const showLiveDemo = isCompleted && Boolean(project.live);
             const projectNumber = `N° 0${i + 1}`;
 
@@ -61,8 +64,8 @@ const Projects = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="project-icon-link"
-                        aria-label="Live Demo"
-                        title="Live Demo"
+                        aria-label="Tested &amp; Deployed"
+                        title="Tested &amp; Deployed"
                       >
                         <ExternalLink size={17} />
                       </a>
@@ -77,7 +80,15 @@ const Projects = () => {
                   </div>
 
                   {project.status && (
-                    <span className={`project-status-pill ${project.status.includes('Ongoing') ? 'ongoing' : ''}`}>
+                    <span
+                      className={`project-status-pill ${
+                        project.status.includes('Ongoing')
+                          ? 'ongoing'
+                          : project.status.includes('Deployed') || project.status.includes('Tested')
+                          ? 'deployed'
+                          : ''
+                      }`}
+                    >
                       {project.status}
                     </span>
                   )}
@@ -111,10 +122,10 @@ const Projects = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="project-btn-atelier demo-btn"
-                        title="Launch Project"
+                        title="Tested &amp; Deployed"
                       >
                         <ExternalLink size={14} />
-                        <span>Live Demo</span>
+                        <span>Tested &amp; Deployed</span>
                       </a>
                     )}
                   </div>

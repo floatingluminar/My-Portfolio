@@ -187,8 +187,8 @@ export const projectsData = [
       "Ultra-sleek modern developer portfolio built with React and Vite, featuring glassmorphism, custom emerald design tokens, and smooth interactions.",
     techStack: ["React", "Vite", "CSS3", "Lucide"],
     github: "https://github.com/floatingluminar/My-Portfolio",
-    live: "#",
-    status: "Completed",
+    live: "https://gargisarkar.dev",
+    status: "Tested & Deployed",
     featured: false,
   },
 ];

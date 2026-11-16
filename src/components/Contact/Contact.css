@@ -233,9 +233,43 @@
   cursor: pointer;
 }
 
-.form-submit:hover {
+.form-server-error {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: #FF9B9B;
+  background: rgba(231, 76, 60, 0.15);
+  border: 1px solid rgba(231, 76, 60, 0.4);
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  box-shadow: 0 2px 10px rgba(2, 10, 8, 0.4);
+}
+
+.form-submit:hover:not(:disabled) {
   transform: translateY(-2px);
   box-shadow: 0 4px 18px rgba(197, 164, 91, 0.4);
+}
+
+.form-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.spin-icon {
+  animation: spin-kf 1s linear infinite;
+}
+
+@keyframes spin-kf {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @media (max-width: 820px) {

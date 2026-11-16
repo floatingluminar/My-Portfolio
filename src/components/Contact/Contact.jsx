@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Send, Mail, Phone, ArrowUpRight } from 'lucide-react';
+import { Send, Mail, Phone, ArrowUpRight, Loader2, CheckCircle2, AlertCircle } from 'lucide-react';
 import { Github, Linkedin, Instagram } from '../common/BrandIcons';
 import { personalInfo } from '../../data/portfolioData';
 import './Contact.css';
@@ -8,6 +8,8 @@ const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [serverError, setServerError] = useState('');
 
   const validate = () => {
     const newErrors = {};
@@ -19,7 +21,7 @@ const Contact = () => {
     return newErrors;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const newErrors = validate();
     if (Object.keys(newErrors).length > 0) {
@@ -27,9 +29,42 @@ const Contact = () => {
       return;
     }
     setErrors({});
-    setSubmitted(true);
-    setFormData({ name: '', email: '', message: '' });
-    setTimeout(() => setSubmitted(false), 4000);
+    setServerError('');
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${personalInfo.email}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          _subject: `New Portfolio Message from ${formData.name}`,
+          _captcha: 'false',
+          _template: 'table',
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && (data.success === 'true' || data.success === true)) {
+        setSubmitted(true);
+        setFormData({ name: '', email: '', message: '' });
+        setTimeout(() => setSubmitted(false), 6000);
+      } else {
+        throw new Error(data.message || 'Failed to send message. Please try again.');
+      }
+    } catch (err) {
+      setServerError(
+        err.message || 'Unable to send message right now. Please try again or email directly.'
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -154,7 +189,15 @@ const Contact = () => {
 
             {submitted && (
               <div className="form-success">
-                <span>✓</span> Message sent successfully! I will get back to you shortly.
+                <CheckCircle2 size={16} />
+                <span>Message sent successfully! I will get back to you shortly.</span>
+              </div>
+            )}
+
+            {serverError && (
+              <div className="form-server-error">
+                <AlertCircle size={16} />
+                <span>{serverError}</span>
               </div>
             )}
 
@@ -197,9 +240,18 @@ const Contact = () => {
               {errors.message && <span className="form-error">{errors.message}</span>}
             </div>
 
-            <button type="submit" className="form-submit">
-              <Send size={15} />
-              <span>Send Message</span>
+            <button type="submit" className="form-submit" disabled={isSubmitting}>
+              {isSubmitting ? (
+                <>
+                  <Loader2 size={15} className="spin-icon" />
+                  <span>Sending Message...</span>
+                </>
+              ) : (
+                <>
+                  <Send size={15} />
+                  <span>Send Message</span>
+                </>
+              )}
             </button>
           </form>
         </div>

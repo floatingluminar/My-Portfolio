@@ -26,7 +26,7 @@ export const aboutData = {
   ],
   highlights: [
     { label: "Degree", value: "BCA (Graduating 2027)" },
-    { label: "CGPA", value: "8.9 (till 6th Sem)" },
+    { label: "CGPA", value: "8.09 (till 6th Sem)" },
     { label: "University", value: "Techno Main Salt Lake" },
     { label: "Location", value: "Kolkata, West Bengal, India" },
   ],
@@ -46,7 +46,7 @@ export const educationData = [
     location: "Kolkata, West Bengal",
     period: "2024 — 2027",
     status: "Currently Pursuing",
-    grade: "CGPA: 8.9 (till 6th Sem)",
+    grade: "CGPA: 8.09 (till 6th Sem)",
     description:
       "Undergraduate computer applications degree with focus on software engineering, database design, computer networks, and full-stack development.",
     coursework: [

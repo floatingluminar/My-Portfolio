@@ -1,4 +1,4 @@
-import { Mail, Phone, Heart } from 'lucide-react';
+import { Mail, Phone } from 'lucide-react';
 import { Github, Linkedin, Instagram } from '../common/BrandIcons';
 import { navLinks, personalInfo } from '../../data/portfolioData';
 import './Footer.css';
@@ -108,12 +108,15 @@ const Footer = () => {
         </div>
 
         <div className="footer-bottom">
-          <p className="footer-copyright">
-            &copy; {currentYear} {personalInfo.name}. Handcrafted with precision &amp; care.
-          </p>
-          <span className="footer-atelier-mark">
-            Midnight Forest Edition <Heart size={12} className="heart-icon" /> Kolkata, India
-          </span>
+          <div className="footer-left">
+            <p className="footer-copyright">
+              &copy; {currentYear} {personalInfo.name} | Somewhere between logic and imagination.
+            </p>
+            <span className="footer-location">Kolkata, India</span>
+          </div>
+          <div className="footer-right">
+            <span className="footer-quote">Somewhere, something begins...</span>
+          </div>
         </div>
       </div>
     </footer>

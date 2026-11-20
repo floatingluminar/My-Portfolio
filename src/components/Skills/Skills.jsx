@@ -43,10 +43,7 @@ const Skills = () => {
                       <div className="chip-indicator">
                         <Sparkles size={11} className="chip-sparkle" />
                       </div>
-                      <span className="chip-name">{skill.name}</span>
-                      {skill.level && (
-                        <span className="chip-level-tag">{skill.level}%</span>
-                      )}
+                      <span className="chip-name">{typeof skill === 'string' ? skill : skill.name}</span>
                     </div>
                   ))}
                 </div>

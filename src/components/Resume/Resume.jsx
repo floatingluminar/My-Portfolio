@@ -98,34 +98,6 @@ const Resume = () => {
               </a>
             </div>
           </div>
-
-          {/* Interactive Document Preview */}
-          <div className="resume-preview-wrapper glass-card fade-up">
-            <div className="preview-window-bar">
-              <div className="window-dots">
-                <span className="dot dot-bronze" />
-                <span className="dot dot-gold" />
-                <span className="dot dot-champagne" />
-              </div>
-              <span className="preview-filename">GARGI.resume.pdf</span>
-              <a
-                href={resumeData.fileUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="preview-popout"
-                title="Open in new window"
-              >
-                <ExternalLink size={14} />
-              </a>
-            </div>
-            <div className="preview-frame-container">
-              <iframe
-                src={`${resumeData.fileUrl}#view=FitH&toolbar=0&navpanes=0`}
-                title="Gargi Sarkar Resume Preview"
-                className="resume-iframe"
-              />
-            </div>
-          </div>
         </div>
       </div>
     </section>
